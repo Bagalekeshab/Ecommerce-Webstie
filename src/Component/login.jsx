@@ -59,8 +59,8 @@ function LoginPage() {
   
   return (
     <div> 
-        <div className="container text-center border-2 bg-gradient-to-r from-slate-500 to-yellow-100 flex flex-col space-y-2 w-fit h-96 m-auto px-10 shadow-lg rounded-xl relative top-20">
-          <p className='text-3xl font-medium py-4 text-white'>Login</p>
+        <div className="container text-center border-2 bg-gradient-to-r bg-stone-300 flex flex-col space-y-2 w-fit h-96 m-auto px-10 shadow-lg rounded-xl relative top-20">
+          <p className='text-3xl font-medium py-4 text-stone-600'>Login</p>
 
           <form onSubmit={handleSubmit} className='space-y-3 '>
             <div >
@@ -96,14 +96,14 @@ function LoginPage() {
           <ToastContainer/>
           </div>
           </form>
-          <div className="icons flex space-x-3 pl-16  text-white text-2xl ">
+          <div className="icons flex space-x-3 pl-16  text-stone-800 text-2xl ">
           <a href='#'><FaGoogle /></a>
           <a href='#'><FaFacebook /></a>
           <a href='#'><FaGithub /></a>
 
 
           </div>
-          <p className='py-1'>or <span className='text-blue-200 cursor-pointer '><Link to='/signup' element = {<SignUpPage/>}>Signup </Link></span></p>
+          <p className='py-1'>or <span className='text-blue-800 cursor-pointer '><Link to='/signup' element = {<SignUpPage/>}>Signup </Link></span></p>
         </div>
         
       
