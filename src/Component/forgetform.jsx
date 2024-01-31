@@ -5,13 +5,17 @@ import {ToastContainer, toast } from 'react-toastify';
 
 function ForgetFormPage() {
 
-  const[showPassword,setShowPassword] = useState(false)
-
   const[password, setPassword] = useState({
     oldPassword: "",
     newPassword: "",
     confirmPassword: "",
   })
+
+  const[isOldPassword, setIsOldPassword] = useState(false)
+  const[isNewPassword, setIsNEwPassword] = useState(false)
+  const[isConfirmPassword, setIsConfirmPassword] = useState(false)
+
+  
 
   const HandlePassword = (name, value)=>{
     setPassword((prev)=> ({...prev, [name]:value }))
@@ -24,9 +28,19 @@ function ForgetFormPage() {
   // }
 
 
-  const PasswordVisibility = ()=>{
-    setShowPassword((prev)=>!prev)
-  }
+  const PasswordVisibility = (name)=>{
+
+    if (name === 'oldPassword') {
+      setIsOldPassword((prev) => !prev);
+    } 
+    else if (name === 'newPassword') {
+      setIsNEwPassword((prev) => !prev);
+    }
+    else if (name === 'confirmPassword') {
+      setIsConfirmPassword((prev) => !prev);
+    }
+
+}
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -70,9 +84,9 @@ function ForgetFormPage() {
             value={password.oldPassword}
             onChange={(e) => HandlePassword('oldPassword', e.target.value)} 
   
-             type={showPassword?'text':'password'}
+             type={isOldPassword?'text':'password'}
              placeholder='Old Password'/>
-             <span onClick={()=>PasswordVisibility()} className='absolute right-12 mt-2 hover:cursor-pointer '>{showPassword? <FaEye/>:<FaEyeSlash/> }</span>
+             <span onClick={()=>PasswordVisibility('oldPassword')} className='absolute right-12 mt-2 hover:cursor-pointer '>{isOldPassword? <FaEye/>:<FaEyeSlash/> }</span>
              
             </div>
 
@@ -81,9 +95,9 @@ function ForgetFormPage() {
             <input className='rounded px-9 py-1 outline-none '
             value={password.newPassword}
             onChange={(e) => HandlePassword('newPassword', e.target.value)}
-             type={showPassword?'text':'password'}
+             type={isNewPassword?'text':'password'}
               placeholder='New Password'/>
-             <span onClick={()=>PasswordVisibility()} className='absolute right-12 mt-2 hover:cursor-pointer '>{showPassword? <FaEye/>:<FaEyeSlash/> }</span>             
+             <span onClick={()=>PasswordVisibility('newPassword')} className='absolute right-12 mt-2 hover:cursor-pointer '>{isNewPassword? <FaEye/>:<FaEyeSlash/> }</span>             
             </div>
 
 
@@ -91,9 +105,9 @@ function ForgetFormPage() {
             <input className='rounded px-9 py-1 outline-none '
             value={password.confirmPassword}
             onChange={(e) => HandlePassword('confirmPassword', e.target.value)}           
-             type={showPassword?'text':'password'}
+             type={isConfirmPassword?'text':'password'}
              placeholder='Confirm Password'/>
-            <span onClick={()=>PasswordVisibility()} className='absolute right-12 mt-2 hover:cursor-pointer '>{showPassword? <FaEye/>:<FaEyeSlash/> }</span>
+            <span onClick={()=>PasswordVisibility('confirmPassword')} className='absolute right-12 mt-2 hover:cursor-pointer '>{isConfirmPassword? <FaEye/>:<FaEyeSlash/> }</span>
           
             </div>
         
