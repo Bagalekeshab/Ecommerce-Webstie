@@ -6,10 +6,16 @@ import SignUpPage from "./Component/signup";
 import ErrorPage from "./Component/ErrorPage";
 import HomePage from "./Component/home/HomePage";
 import ProductProject from "./Component/products/productsproject";
+import ProductCart from "./Component/CartPage/CartPage";
+
+
 
 function App() {
+
+
   return (
     <div className="APP">
+      
       <Router>
         <Routes>
         <Route path="/" element={<HomePage/>}/>
@@ -18,9 +24,11 @@ function App() {
           <Route path="/signup" element={<SignUpPage/>}/>
           <Route path="/errorpage" element={<ErrorPage/>}/>
           <Route path="/product/:id" element={<ProductProject/>}/>
+          <Route path="/ProductCart/:id" element={<ProductCart/>}/>
           
         </Routes>
       </Router>
+     
     </div>
    
     

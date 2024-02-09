@@ -3,11 +3,21 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import ContextAppPage from './Component/Context/ContextApp';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    <ContextAppPage>
+      
     <App />
+
+
+    </ContextAppPage>
+    
+
+
+    
   </React.StrictMode>
 );
 
