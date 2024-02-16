@@ -1,26 +1,53 @@
 
+import { InitialState } from "./ContextApp";
 
-export const Reducer = (state=[], action) => {
-
-
-  const product =action.payload;
-
+export const Reducer = (state=InitialState, action) => {
 
     switch (action.type) {
+      
 
-        case 'ADD_ITEM':
+        case 'ADD_TO_CART':
 
-          const exits = state?.filter((item) => item.id === product.id);
+        const product= action.payload;
 
+        const exits = state.cart.find(item => item.id === product);
+       
           if(exits){
-            return state.map((item)=>item.id === product.id ? {...item, quantity: item.quantity + 1}:item );
+
+            return {...state, 
+            cart: state.cart.map(item=>item.id === product ? {...item, quantity: item.quantity + 1}:item )}
+
           }
-          else{
-            const product= action.payload
-            return[...state,{...product, quantity:1,}]
+          
+          else {
+            return {
+              ...state,
+              cart: [
+                ...state.cart,
+                {
+                  id: product.id,
+                  quantity:product.quantity,
+                  title: product.title,
+                  image: product.image,
+                  price:product.price,
+                }
+              ],
+            }
           }
 
+       case 'DELETE_CART':
 
+        return {
+          ...state,
+          cart: state.cart.filter(item => item !== action.payload.i),
+          total: state.total - action.payload.price
+        };
+
+       
+
+       
+
+         
       case 'SET_NUMBER':
         return { ...state, number: action.payload };
   
@@ -30,20 +57,11 @@ export const Reducer = (state=[], action) => {
       case 'SET_PRODUCT':
   
         return { ...state, product: action.payload };
-  
-  
-        case 'SET_CARTITEMS':
-        
-        return { ...state, cartItems: action.payload };
-  
-  
-  
+
+
       case 'SET_SHOW_DATE':
         return { ...state, showDate: action.payload };
-  
-      // case 'SET_TODOLIST':
-      //   return { ...state, todolist: action.payload };
-  
+
       default:
         return state;
     }

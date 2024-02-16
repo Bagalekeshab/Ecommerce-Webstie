@@ -13,29 +13,10 @@ import ProductCart from '../CartPage/CartPage';
 
 function Navbar(props) {
 
-    const {state , dispatch} = useContext(ContextApp)
+    const {state} = useContext(ContextApp)
+
 
     const {id} = useParams()
-
-    // const clickAddCart =()=>{
-
-    //       dispatch({type:'ADD_CART', payload:state.cart})
-  
-    //     }
-      
-
-    // const handleClick =() =>{
-    //     dispatch({type:'SET_TODOLIST', payload:state.todolist})
-
-    // }
-        
-    const selectProduct =(id)=>{
-        
-        if(state.product){
-            dispatch({type:'ADD_ITEM', payload:{ id }})
-        }
-        console.log(state.product)
-    }
 
   return (
     <div>
@@ -52,15 +33,19 @@ function Navbar(props) {
             </div>
             <div className='flex items-center gap-5'>
                 <div className='flex'>
-                <div className="cart-icon text-white text-3xl" onClick={selectProduct} >
+                <div className="cart-icon text-white text-3xl">
                     <Link to={`/ProductCart/${id}`} element={<ProductCart/>}> <IoMdCart /> </Link>
                     
                 </div>
                 <div>
-                    {!state.showNumber ? (
-                        <div>{state.number}
-                    </div>
-                    ) :null}
+
+                    {/* {!state.showNumber ?<h1>{state.number}</h1> : null} */}
+                    
+                    {/* {cart.length} */}
+                    
+
+                   {!state.showNumber? <h1>{state.number}</h1>:null}
+                    
                 </div>
                 </div>
                 <p className='text-white text-2xl '>
